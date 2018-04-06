@@ -7,9 +7,12 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import {sync} from 'vuex-router-sync'
 import store from '@/store/store'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.css'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
+Vue.use(VueMaterial)
 sync(store, router)
 /* eslint-disable no-new */
 new Vue({

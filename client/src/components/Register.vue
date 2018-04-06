@@ -1,43 +1,44 @@
 <template>
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <div class="white elevation-2">
-        <v-toolbar flat dense class="cyan" dark>
-          <v-toolbar-title>Register</v-toolbar-title>
-        </v-toolbar>
-        <div class="pl-4 pr-4 pt-2 pb-2">
-          <form
-            name="tabtracker"
-            autocomplete="on">
-            <v-text-field
-              label="Enter Email"
-              v-model="email"></v-text-field>
-            <br>
 
-            <v-text-field
-              autocomplete="new-password"
-              type="password"
-              label="Enter Password"
-              v-model="password"></v-text-field>
-            <br>
+      <panel title="Register">
+        <form
+          name="tabtracker"
+          autocomplete="off">
 
-            <div class="error" v-html="error"></div>
-              <v-btn
-                dark
-                class="cyan"
-                type="submit"
-                @click="register">
-                Register
-              </v-btn>
-          </form>
-        </div>
-      </div>
+          <v-text-field
+            label="Enter Email"
+            v-model="email"></v-text-field>
+          <br>
+
+          <v-text-field
+            type="password"
+            label="Enter Password"
+            v-model="password"
+          ></v-text-field>
+          <br>
+
+          <div class="error" v-html="error"></div>
+
+          <v-btn
+            dark
+            class="cyan"
+            type="submit"
+            @click="register">
+            Register
+          </v-btn>
+        </form>
+      </panel>
+
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
+
 export default {
   data () {
     return {
@@ -45,6 +46,9 @@ export default {
       password: '',
       error: null
     }
+  },
+  components: {
+    Panel
   },
   watch: {
     // email (value) {

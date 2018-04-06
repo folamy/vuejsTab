@@ -32,4 +32,14 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.home {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  /* text-decoration-style: none */
+}
+.btn:hover{
+  /* border: 1px solid red; */
+  text-decoration: none;
+}
 </style>

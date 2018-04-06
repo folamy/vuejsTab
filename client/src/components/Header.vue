@@ -1,7 +1,7 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
     <v-toolbar-title class="mr-4">
-      <router-link to="/" class="home">
+      <router-link to="/" class="home headerLink">
         <span>
           TabTracker
         </span>
@@ -9,50 +9,72 @@
     </v-toolbar-title>
 
     <v-toolbar-items>
-      <v-btn flat dark>
-          Browse
+      <v-btn
+        flat
+        dark
+        class="headerLink"
+        :to="{
+          name: 'songs'
+        }">
+        Browse
       </v-btn>
     </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
-    <router-link to="login" class="headerLink">
-      <v-toolbar-items>
-        <v-btn
-          flat
-          dark
-          v-if="!$store.state.isUserLoggedIn">
-          Login
-        </v-btn>
-      </v-toolbar-items>
-    </router-link>
+    <v-toolbar-items>
+      <v-btn
+        flat
+        dark
+        class="headerLink"
+        :to="{
+          name: 'login'
+        }"
+        v-if="!$store.state.isUserLoggedIn">
+        Login
+      </v-btn>
 
-    <router-link to="register" class="headerLink">
-      <v-toolbar-items>
-        <v-btn
-          flat
-          dark
-          v-if="!$store.state.isUserLoggedIn">
-          Sign Up
-        </v-btn>
-      </v-toolbar-items>
-    </router-link>
+      <v-btn
+        flat
+        dark
+        class="headerLink"
+        :to="{
+          name: 'register'
+        }"
+        v-if="!$store.state.isUserLoggedIn">
+        Sign Up
+      </v-btn>
+
+      <v-btn
+        flat
+        dark
+        class="headerLink"
+        @click="logout"
+        v-if="$store.state.isUserLoggedIn">
+        Log Out
+      </v-btn>
+    </v-toolbar-items>
 
   </v-toolbar>
 </template>
 
 <script>
 export default {
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      // redirect to homepage
+      this.$router.push({
+        name: 'root'
+      })
+    }
+  }
 }
 </script>
 <style scoped>
-  .home {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-decoration-style: none
-  }
-.headerLink {
+.headerLink:hover{
   /* border: 1px solid red; */
   text-decoration: none
 }
