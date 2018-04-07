@@ -101,7 +101,7 @@ export default {
   margin: 0 auto;
 }
 .btn:hover{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   text-decoration: none;
 }
 </style>

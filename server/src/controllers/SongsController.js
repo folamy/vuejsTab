@@ -31,8 +31,25 @@ module.exports = {
       res.send(songs)
     } catch (error) {
       res.status(500).send({
-        error: 'An error has occoured trying to create the song'        
+        error: 'An error has occoured trying to create the song'
       })
     }
+
+  },
+
+  async put (req, res) {
+    try {
+      const songs = await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      })
+      res.send(req.body)
+    } catch (error) {
+      res.status(500).send({
+        error: 'An error has occoured trying to update the song'
+      })
+    }
+
   }
 }
